@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
+import {Todo} from "./Todo";
 import { TodoForm } from "./TodoForm";
 export const TodoWraper = () => {
     const [todos,setTodos]=useState([])
 
     const addtodo=(todo)=>{
-        setTodos([...todos,{banana:todo}])
+        setTodos([...todos,todo])
         console.log(todos,"todos result");
         
     }
@@ -15,7 +15,16 @@ export const TodoWraper = () => {
       <div className="container vh-100 d-flex justify-content-center align-items-center">
         <div className="row w-100">
           <div className="col-md-6 mx-auto">
+
            <TodoForm addtodo={addtodo} />
+
+
+           {
+            todos.map((todo,index)=>(
+                <Todo todo={todo}/>  )
+            )
+           }
+
           </div>
         </div>
       </div>
